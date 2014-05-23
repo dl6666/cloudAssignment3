@@ -12,3 +12,4 @@ top5 = foreach grouped {
         top    = limit sorted 5;
         generate flatten(top);
 };
+STORE top5 INTO 'part1res';
