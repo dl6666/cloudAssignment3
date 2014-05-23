@@ -9,7 +9,7 @@ tagcount = FOREACH taggroups GENERATE FLATTEN(group) AS (timestamp, hashtag), CO
 grouped = GROUP tagcount BY timestamp;
 top5 = foreach grouped {
         sorted = order tagcount by count desc;
-        top    = limit sorted 5;
+        top    = limit sorted 20;
         generate flatten(top);
 };
-STORE top5 INTO '$OUTPUT/part1res';
+STORE top5 INTO '$OUTPUT/forpart2';
